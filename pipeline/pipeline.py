@@ -12,7 +12,7 @@ logger = get_logger(__name__)
 
 class AnimeRecommendationPipeline:
     
-    def __init__(self, persist_dir : str):
+    def __init__(self, persist_dir : str = PERSIST_DIR):
         try:
 
             self.persist_dir = persist_dir
@@ -38,6 +38,8 @@ class AnimeRecommendationPipeline:
             logger.info(f"Recieved a query {query}")
 
             recommendation = self.recommender.get_recommendation(query)
+            
+            return recommendation
 
             logger.info("Recommendation generated successfully.")
 
